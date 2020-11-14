@@ -1,0 +1,76 @@
+<style>
+    @font-face {
+        font-family: "DIN Next";
+        src: url("https://f9.limitedrun.com/fonts/503/DINNextLTPro-Medium.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    html, body, .container {
+        height: 99%;
+        background-color: black;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: DIN next;
+        color: white;
+        font-size: 128pt;
+    }
+</style>
+
+<html>
+    <div class="container" id="text">
+        <span class="days">00</span>
+        :<span class="hours">00</span>
+        :<span class="minutes">00</span>
+        :<span class="seconds">00</span>
+    </div>
+</html>
+
+<script>
+    var deadline = "2020-11-14 00:00:00 GMT-0800"
+    function getTimeRemaining(endtime) {
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        const seconds = Math.floor( (total/1000) % 60 );
+        const minutes = Math.floor( (total/1000/60) % 60 );
+        const hours = Math.floor( (total/(1000*60*60)) % 24 );
+        const days = Math.floor( total/(1000*60*60*24) );
+
+        return {
+            total,
+            days,
+            hours,
+            minutes,
+            seconds
+        };
+    }
+
+    function setTime(time) {
+        var clock = document.getElementById("text")
+
+        const daysSpan    = clock.querySelector('.days');
+        const hoursSpan   = clock.querySelector('.hours');
+        const minutesSpan = clock.querySelector('.minutes');
+        const secondsSpan = clock.querySelector('.seconds');
+
+        daysSpan.innerHTML    = ( "000" + time.days    ).slice(-3)
+        hoursSpan.innerHTML   = ( "00"  + time.hours   ).slice(-2)
+        minutesSpan.innerHTML = ( "00"  + time.minutes ).slice(-2)
+        secondsSpan.innerHTML = ( "00"  + time.seconds ).slice(-2)
+    }
+
+    updateTime()
+    var intervalID = window.setInterval(updateTime, 1000)
+    function updateTime() {
+        var t = getTimeRemaining(deadline)
+
+        setTime(t)
+
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+        }   
+    }
+</script>
