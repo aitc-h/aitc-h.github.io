@@ -22,6 +22,10 @@
 </style>
 
 <html>
+    <head>
+        <title>Mememto Mori</title>
+        <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0509/6685/5851/t/7/assets/favicon.png?v=3632849545098929394">
+    </head>
     <div class="container" id="text">
         <span class="days">00</span>
         :<span class="hours">00</span>
@@ -56,7 +60,7 @@
         const minutesSpan = clock.querySelector('.minutes');
         const secondsSpan = clock.querySelector('.seconds');
 
-        daysSpan.innerHTML    = ( "00" + time.days     ).slice(-2)
+        daysSpan.innerHTML    = ( "000" + time.days    ).slice(-3)
         hoursSpan.innerHTML   = ( "00"  + time.hours   ).slice(-2)
         minutesSpan.innerHTML = ( "00"  + time.minutes ).slice(-2)
         secondsSpan.innerHTML = ( "00"  + time.seconds ).slice(-2)
@@ -66,11 +70,11 @@
     var intervalID = window.setInterval(updateTime, 1000)
     function updateTime() {
         var t = getTimeRemaining(deadline)
-        
+
         if (t.total <= 0) {
             clearInterval(intervalID);
-        } 
-        
-        setTime(t)  
+        }   
+        setTime(t)
+
     }
 </script>
