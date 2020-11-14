@@ -66,11 +66,11 @@
     var intervalID = window.setInterval(updateTime, 1000)
     function updateTime() {
         var t = getTimeRemaining(deadline)
-
-        setTime(t)
-
+        
         if (t.total <= 0) {
-            clearInterval(timeinterval);
-        }   
+            clearInterval(intervalID);
+        } 
+        
+        setTime(t)  
     }
 </script>
