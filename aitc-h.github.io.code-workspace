@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "_posts",
+			"name": "Posts"
+		},
+		{
+			"path": "./_drafts",
+			"name": "Drafts"
+		},
+		{
+			"path": "./assets",
+			"name": "Assets"
+		},
+		{
+			"path": "",
+			"name": "Test"
+		}
+	],
+	"settings": {
+		"emmet.includeLanguages": {
+			"jekyll": "html"
+		}
+	}
+}
